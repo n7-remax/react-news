@@ -1,0 +1,13 @@
+body {
+    background-color: #f5f5f5;
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card-link {
+    text-decoration: none;
+    color: unset;
+}
