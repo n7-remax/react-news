@@ -10,8 +10,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
+import moment from 'moment'
 
 import axios from 'axios';
 
@@ -42,21 +42,25 @@ const styles = theme => ({
 class News extends Component {
     state = {
         articles: [],
+        totalResults: null,
         category: 'business',
         country: 'us'
+
     }
 
     getArticles = () => {
         axios.get(`https://newsapi.org/v2/top-headlines?country=${this.state.country}&category=${this.state.category}&pageSize=100&apiKey=${API_KEY}`)
             .then(response => {
+                console.log(response)
                 this.setState({
-                    articles: response.data.articles
+                    articles: response.data.articles,
+                    totalResults: response.data.totalResults
                 })
             })
 
     }
 
-     componentDidMount() {
+    componentDidMount() {
         this.getArticles();
         console.log("mounted")
 
@@ -91,23 +95,15 @@ class News extends Component {
                         />
                         <CardHeader
                             title={news.title}
-                            subheader="September 14, 2016"
+                            subheader={moment(news.publishedAt).format('MMMM Do YYYY, h:mm:ss a')}
                         />
                         <CardContent>
-                            {/* <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                {news.title}
-                            </Typography> */}
                             <Typography variant="h5" component="h2">
                                 {news.author ? news.author : news.source.name}
                             </Typography>
                             <Typography className={classes.pos} color="textSecondary">
                                 {news.description}
                             </Typography>
-                            {/* <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                         <br />
-                                {'"a benevolent smile"'}
-                            </Typography> */}
                         </CardContent>
                     </a>
                 </Card>
@@ -136,6 +132,7 @@ class News extends Component {
                 </FormControl>
                 <div className="cards-wrapper">
                     {newsList}
+
                 </div>
 
             </div>
