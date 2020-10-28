@@ -44,7 +44,6 @@ class News extends Component {
         articles: [],
         category: 'business',
         country: 'us'
-
     }
 
     getArticles = () => {
@@ -57,7 +56,7 @@ class News extends Component {
 
     }
 
-    componentDidMount() {
+     componentDidMount() {
         this.getArticles();
         console.log("mounted")
 
@@ -137,7 +136,6 @@ class News extends Component {
                 </FormControl>
                 <div className="cards-wrapper">
                     {newsList}
-
                 </div>
 
             </div>
