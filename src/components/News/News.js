@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 
-import { withStyles } from "@material-ui/core/styles";
+import NewsSelector from '../NewsSelector/NewsSelector';
 
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
+import { withStyles } from "@material-ui/core/styles";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-
 import moment from 'moment'
-
 import axios from 'axios';
+
+import noImage from '../../assets/image/no_image.jpg'
 
 const API_KEY = 'fd6ac6af694b4aad9a8daf570e04232f';
 
@@ -68,14 +66,13 @@ class News extends Component {
     componentDidUpdate(nextProps, nextState) {
         if (this.state.category !== nextState.category) {
             console.log('update')
-            console.log(nextState)
             this.getArticles()
         }
 
     }
 
     selectCategoryHandler = (event) => {
-        console.log(event.target.value)
+        console.log('Select Value Changed!')
         this.setState({
             category: event.target.value
         })
@@ -89,7 +86,7 @@ class News extends Component {
                     <a className="card-link" href={news.url} target="_blank" rel="noopener noreferrer">
                         <CardMedia
                             className={classes.media}
-                            image={news.urlToImage}
+                            image={news.urlToImage ? news.urlToImage : noImage}
                             src="img"
                             title="news"
                         />
@@ -111,28 +108,11 @@ class News extends Component {
         })
         return (
             <div className="News">
-                <FormControl>
-                    <InputLabel htmlFor="category-native-simple">Category</InputLabel>
-                    <Select
-                        native
-                        value={this.state.category}
-                        onChange={this.selectCategoryHandler}
-                        inputProps={{
-                            name: 'Category',
-                            id: 'category-native-simple',
-                        }}
-                    >
-                        <option value='business'>Business</option>
-                        <option value='technology'>Technology</option>
-                        <option value='science'>Science</option>
-                        <option value='health'>Health</option>
-                        <option value='entertainment'>Entertainment</option>
-                        <option value='sports'>Sports</option>
-                    </Select>
-                </FormControl>
+                <div className="news-selector-wrapper">
+                    <NewsSelector category={this.state.category} selectCategoryHandler={this.selectCategoryHandler} />
+                </div>
                 <div className="cards-wrapper">
                     {newsList}
-
                 </div>
 
             </div>

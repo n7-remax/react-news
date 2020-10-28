@@ -43,3 +43,9 @@ body {
     color: #1a73e8;
     background-color: #fff;
 }
+
+.news-selector-wrapper {
+    margin: 20px 0 150px 0;
+    display: flex;
+    justify-content: center;
+}
