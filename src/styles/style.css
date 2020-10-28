@@ -11,3 +11,35 @@ body {
     text-decoration: none;
     color: unset;
 }
+
+.header {
+    background-color: #222;
+    display: flex;
+}
+.header-logo {
+    background-color: #1a73e8;
+}
+.header a {
+    text-decoration: none;
+}
+.header-powered-text {
+    display: flex;
+    color: #1a73e8;
+    background-color: #fff;
+    font-size: 20px;
+    margin: 5px;
+    padding: 2px 5px;
+}
+.header-news-text {
+    letter-spacing: -1px;
+    padding: 5px 0 5px 6px;
+    background-color: #1a73e8;
+    color: white;
+    font-size: 36px;
+}
+.header-api-text {
+    margin: 0 3px 0 8px;
+    padding: 0 8px;
+    color: #1a73e8;
+    background-color: #fff;
+}

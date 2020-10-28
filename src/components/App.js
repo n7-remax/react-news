@@ -1,6 +1,7 @@
 import React from 'react';
 
 import News from './News/News';
+import Header from './Header/Header';
 
 import '../styles/style.css'
 
@@ -8,8 +9,8 @@ import '../styles/style.css'
 function App() {
   return (
     <div className="App">
-      <News/>
-     
+      <Header />
+      <News />
     </div>
   );
 }
