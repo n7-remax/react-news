@@ -99,7 +99,7 @@ class News extends Component {
                                 {news.author ? news.author : news.source.name}
                             </Typography>
                             <Typography className={classes.pos} color="textSecondary">
-                                {news.description}
+                                {news.description ? news.description : "No preview description"}
                             </Typography>
                         </CardContent>
                     </a>
